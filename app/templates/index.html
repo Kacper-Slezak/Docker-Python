@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Notes Service</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+    <h1>Mój Notes Service</h1>
+    <form action="/" method="post" class="add-form">
+        <input type="text" name="note_content" placeholder="Wpisz nową notatkę..." required>
+        <button type="submit">Dodaj notatkę</button>
+    </form>
+
+    <ul class="notes-list">
+        {% for note in notes %}
+        <li class="note-item">
+            <span>{{ note.content }}</span>
+            <a href="/delete_note/{{ note.id }}" class="delete-button">Usuń</a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+</body>
+</html>
